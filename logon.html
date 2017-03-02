@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<style type="text/css">
+	.w1 {
+		margin: 5;
+		width: 40px;
+		}
+	li {
+		display: inline;
+	}	
+</style>
+<script type="text/javascript">
+
+	function pstDt(x, y){
+	//	var x2 = localStorage.getItem("id");
+	//	var y2 = localStorage.getItem("pw");
+	//	if (x2 != ""){
+	//		$("#result").attr(x2);
+	//	}
+		$.post("logon2.php",
+			{"x":x, "y":y},
+			function(data){
+				if (data != ""){
+				$("#result").html(data);
+				$("#f1").hide();
+		//		localStorage.setItem("id", x);
+		//		localStorage.setItem("pw", y);
+				} else {
+				
+				}	
+			}
+		);
+	}
+	
+	$(function(){
+
+		// クリックでポップアップ
+		$("#btn").click(function(){
+			// POST形式でデータを送信し，受信したHTML文字列を画面に表示する
+			var x = $("#x").val();
+			var y = $("#y").val();
+			pstDt(x, y);
+		});
+		// タイマーでポップアップ
+		setInterval(function(){
+			var x = "tajiri";
+			var y = "19360801";
+			pstDt(x, y);
+		},5000); // 10秒
+
+	});
+</script>
+</head>
+<body>
+<div id='f1'>
+<h1>ログイン</h1>
+<p>ログインしてください</p>
+<ul>
+<li><p class='w1'>id:</p><input type="text" id="x"/></li>
+<li><p class='w1'>pw:</p><input type="password" id="y"/></li>
+<li><button type="button" id="btn">login</button></li>
+</ul>
+</div>
+
+<div id="result"></div>
+
+</body>
+</html>
