@@ -15,80 +15,162 @@
 <link rel="shortcut icon" href="">
 <!-- tableのborder-collapseをcollapseにしないとthead,tbody,tfoot,trのborderは効かない -->
 <style>
-	table {
+	body {
+		margin: 0px;
+
+	}
+	div#wrapper {
+		width: 800px;
+		margin: 0 auto;
+	}
+	#his table{
+		width: 100%;
+		border-collapse: collapse;
+	}
+	#rep table {
 		border-collapse: collapse;
 		margin: 0px;
 		padding: 0px;
 	}
-	thead {}
-	tbody tr.person td, tbody tr.hontai td {border: solid 1px #0000FF}
-	tfoot tr.inn td {border: solid 1px #0000FF}
+	caption {font-size: 1.4em;}
+	thead tr.repl td {border: solid 1px #000000}
+	tbody tr.person td, tbody tr.hontai td {border: solid 1px #000000}
+	tfoot tr.inn td {border: solid 1px #000000}
 	tfoot {
-		border: solid 1px green;
-		background-color: red;
+		border: solid 1px gray;
+		background-color: ;
 	}
 	#inns {
 		float: right;
+		text-align: center;
 	}
-	#inns tr,td {
-		margin: 0px;
+	.innk {
+		width: 50px;
+		height: 50px;
+	}
+	.innt td {
+		font-size: 0.8em;
+		line-height: 1.1em;
+	}
+	.ttls, .repl td {
+		background-color: palegreen;
+		padding: 5px;
+	}
+	.w15{
+		width: 15%;
+	}
+	.w35 {
+		width: 35%;
+	}
+	.infs {
+		padding: 5px;
+	}
+	.tar {
+		text-align: right;
+	}
+	.hiduke {
+		font-size: 0.9em;
+	}
+	.conts {
+		height: 200px;
+	}
+	.reps {
+		padding: 5px;
 	}
 </style>
 </head>
 <body>
-	<table>
-		<caption>直行直帰届</caption>
-		<thead>
-			<tr>
-				<td colspan="4">提出日：</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr class="person">
-				<td>data</td>
-				<td>data</td>
-				<td>data</td>
-				<td>data</td>
-			</tr>
-			<tr class="person">
-				<td>data</td>
-				<td>data</td>
-				<td>data</td>
-				<td>data</td>
-			</tr>
-			<tr>
-				<td></td>
-			</tr>
-			<tr class="hontai">
-				<td>種別</td>
-				<td colspan="3"></td>
-			</tr>
-			<tr class="hontai">
-				<td>日時</td>
-				<td colspan="3"></td>
-			</tr>
-			<tr class="hontai">
-				<td>業務内容</td>
-				<td colspan="3"></td>
-			</tr>
-			<tr>
-				<td></td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="4">
-						<table id="inns">
-							<tr class="inn">
-								<td>社長</td>
-							</tr>
-							<tr class="inn">
-								<td>印</td>
-							</tr>
-						</table>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
+	<div id="wrapper">
+		<div id="his">
+			<table>
+				<thead>
+					<tr class="repl">
+						<td class="w15">所属</td><td class="w15">氏名</td><td>日付</td><td>行き先</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>shozoku</td><td>sname</td><td>hiduke</td><td>ikisaki</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="rep">
+			<table>
+				<caption>直行・直帰届</caption>
+				<thead>
+					<tr>
+						<td class="tar hiduke" colspan="4">提出日： teishutsubi</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="person">
+						<td class="ttls w15">所属</td>
+						<td class="infs w35">shozoku</td>
+						<td class="ttls w15">社員番号</td>
+						<td class="infs w35">shainid</td>
+					</tr>
+					<tr class="person">
+						<td class="ttls w15">役職</td>
+						<td class="infs w35">career</td>
+						<td class="ttls w15">氏名</td>
+						<td class="infs w35">sname</td>
+					</tr>
+					<tr>
+						<td></td>
+					</tr>
+					<tr class="hontai">
+						<td class="ttls">種別</td>
+						<td class="reps" colspan="3">shubetsu<br>
+						□　直行　　　　□　直帰　　　　□　直行・直帰
+						</td>
+					</tr>
+					<tr class="hontai">
+						<td class="ttls">日時</td>
+						<td class="reps" colspan="3">nichiji<br>
+						【直行日】<br>
+						平成　　　年　　　月　　　日　　　分　訪問予定<br>
+						【直帰日】<br>
+						平成　　　年　　　月　　　日　　　分　訪問予定
+						</td>
+					</tr>
+					<tr class="hontai">
+						<td class="ttls">行先</td>
+						<td class="reps" colspan="3">ikisaki<br>
+						行き先１：<br>
+						行き先２：<br>
+						</td>
+					</tr>
+					<tr class="hontai">
+						<td class="ttls conts">業務内容<br>(理由)</td>
+						<td class="reps" colspan="3">naiyou</td>
+					</tr>
+					<tr>
+						<td></td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4">
+								<table id="inns">
+									<tr class="inn innt">
+										<td>社長</td>
+										<td>総務部</td>
+										<td>人材<br>開発部</td>
+										<td>介護事業<br>推進部</td>
+									</tr>
+									<tr class="inn">
+										<td class="innk">印</td>
+										<td class="innk">印</td>
+										<td class="innk">印</td>
+										<td class="innk">印</td>
+									</tr>
+								</table>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
 </body>
 </html>
