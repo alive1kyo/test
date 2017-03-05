@@ -77,6 +77,7 @@
 	.reps {
 		padding: 5px;
 	}
+
 </style>
 </head>
 <body>
@@ -85,14 +86,21 @@
 			<table>
 				<thead>
 					<tr class="repl">
-						<td class="w15">所属</td><td class="w15">氏名</td><td>日付</td><td>行き先</td>
+						<td class="w15">所属</td><td class="w15">氏名</td><td>日付</td><td colspan="2">行き先</td>
+						<td></td><td></td><td></td><td></td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>shozoku</td><td>sname</td><td>hiduke</td><td>ikisaki</td>
+						<td>shozoku</td><td>sname</td><td>hiduke</td><td>ikisaki</td><td><button>確認</button></td>
+						<td></td><td></td><td></td><td></td>
 					</tr>
 				</tbody>
+				<tfoot>
+					<tr>
+						<td class="tar" colspan="9"><button type="">新規</button></td>
+					</tr>
+				</tfoot>
 			</table>
 		</div>
 		<div id="rep">
@@ -143,7 +151,7 @@
 					</tr>
 					<tr class="hontai">
 						<td class="ttls conts">業務内容<br>(理由)</td>
-						<td class="reps" colspan="3">naiyou</td>
+						<td class="reps" colspan="3">naiyou<br>comment</td>
 					</tr>
 					<tr>
 						<td></td>
