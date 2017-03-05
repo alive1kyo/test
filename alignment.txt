@@ -1,0 +1,7 @@
+
+a     = b;
+ab    = ab;
+abc   = abc;
+abcde = abcde;
+
+ctl+alt+a
