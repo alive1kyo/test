@@ -1,0 +1,27 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Alignment",
+		"All Autocomplete",
+		"AutoFileName",
+		"BracketHighlighter",
+		"Color Highlighter",
+		"ConvertToUTF8",
+		"CSS Snippets",
+		"Emmet",
+		"Goto-CSS-Declaration",
+		"HTML Snippets",
+		"HTML5",
+		"IMESupport",
+		"Japanize",
+		"jQuery",
+		"Package Control",
+		"SideBarEnhancements",
+		"SublimeCodeIntel",
+		"TrailingSpaces"
+	]
+}
