@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="">
+<!--[if lt IE 9]>
+<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+<!-- tableのborder-collapseをcollapseにしないとthead,tbody,tfoot,trのborderは効かない -->
+<style>
+	table {
+		border-collapse: collapse;
+		margin: 0px;
+		padding: 0px;
+	}
+	thead {}
+	tbody tr.person td, tbody tr.hontai td {border: solid 1px #0000FF}
+	tfoot tr.inn td {border: solid 1px #0000FF}
+	tfoot {
+		border: solid 1px green;
+		background-color: red;
+	}
+	#inns {
+		float: right;
+	}
+	#inns tr,td {
+		margin: 0px;
+	}
+</style>
+</head>
+<body>
+	<table>
+		<caption>直行直帰届</caption>
+		<thead>
+			<tr>
+				<td colspan="4">提出日：</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="person">
+				<td>data</td>
+				<td>data</td>
+				<td>data</td>
+				<td>data</td>
+			</tr>
+			<tr class="person">
+				<td>data</td>
+				<td>data</td>
+				<td>data</td>
+				<td>data</td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr class="hontai">
+				<td>種別</td>
+				<td colspan="3"></td>
+			</tr>
+			<tr class="hontai">
+				<td>日時</td>
+				<td colspan="3"></td>
+			</tr>
+			<tr class="hontai">
+				<td>業務内容</td>
+				<td colspan="3"></td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4">
+						<table id="inns">
+							<tr class="inn">
+								<td>社長</td>
+							</tr>
+							<tr class="inn">
+								<td>印</td>
+							</tr>
+						</table>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</body>
+</html>
