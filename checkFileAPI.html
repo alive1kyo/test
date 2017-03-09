@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>check File API</title>
+	<script type="text/javascript" src="scripts/shCore.js"></script>
+	<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+	<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+	
+	<script>
+	// Check for the various File API support.
+	if (window.File && window.FileReader && window.FileList && window.Blob) {
+	  alert('Great success! All the File APIs are supported.');
+	} else {
+	  alert('The File APIs are not fully supported in this browser.');
+	}
+	</script>
+	
+	</head>
+<body>
+
+</body>
+</html>
