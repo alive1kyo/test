@@ -1,0 +1,14 @@
+http://qiita.com/yamamoto_hiroya/items/e536d812a67ad618f450
+
+http://qiita.com/yamamoto_hiroya/items/9380375b11c99f056663
+
+http://qiita.com/yamamoto_hiroya/items/6ad6d448afcff1cf3791
+
+http://the-zombis.sakura.ne.jp/wp/blog/2011/05/02/post-660/
+
+https://www.html5rocks.com/ja/tutorials/websockets/basics/
+
+https://socket.io/
+
+http://www.buildinsider.net/web/chromedevtools/01
+開発者ツール
