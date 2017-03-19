@@ -89,6 +89,33 @@
 		</pre>
 	</div>
 <!-- *************************************************************************************************** -->		
+	<h3>表示非表示</h3>
+	<div>
+	<pre class="brush: js;">	
+	// 表示非表示関数部分
+	$.fn.clickToggle = function(a, b) {
+		return this.each(function() {
+			var clicked = false;
+			$(this).on('click', function() {
+				clicked = !clicked;
+				if (clicked) {
+					return a.apply(this, arguments);
+				}
+				return b.apply(this, arguments);
+			});
+		});
+	};
+		
+	// 表示非表示クリック部分
+	$(".foo").hide();
+	$("#fooid").clickToggle(function(){
+			$(".foo").show();
+		}, function(){
+			$(".foo").hide();
+	});
+		</pre>
+	</div>
+<!-- *************************************************************************************************** -->		
 	<h3>ファイルのアップロード</h3>
 	<div>
 	<pre class="brush: js;">
