@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+<style>
+	article, form {
+		margin: 20px;
+		padding: 20px;
+	}
+	article._1 {
+		background-color: palegreen;
+	}
+	article._2 {
+		background-color: pink;
+	}
+	._a3 {
+		background-color: skyblue;
+	}
+</style>
+<script type="text/javascript">
+	function test(obj){
+		var hoge = obj.getAttribute('value');
+	//	var hoge = obj['value'];
+	//	var hoge = obj.l.value;
+		alert(hoge);
+	}
+</script>
+
+
+</head>
+
+<body>
+	<article class='_1'>
+		<input id="k" name="a" value="x" onclick="test(this)">a
+		<input id="l" name="b" value="y" onclick="test(this)">b
+		<input id="m" name="c" value="z" onclick="test(this)">c
+	</article>
+
+	<article class='_2'>
+		<h2 id="k" name="a" value="x" onclick="test(this)">a</h2>
+		<h2 id="l" name="b" value="y" onclick="test(this)">b</h2>
+		<h2 id="m" name="c" value="z" onclick="test(this)">c</h2>
+		<input onclick="test(this.h2)">
+	</article>
+
+	<article class='_1'>
+		<div id="k" name="a" value="x" onclick="test(this)">a</div>
+		<div id="l" name="b" value="y" onclick="test(this)">b</div>
+		<div id="m" name="c" value="z" onclick="test(this)">c</div>
+		<input onclick="test(this.article)">
+	</article>
+
+	<form class='_a3'>
+		<input id="k" name="a" value="x" onclick="test(this)">a
+		<input id="l" name="b" value="y" onclick="test(this)">b
+		<input id="m" name="c" value="z" onclick="test(this)">c
+		<input onclick="test(this.form)">
+	</form>
+
+</body>
+</html>
