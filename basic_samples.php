@@ -8,10 +8,10 @@
 	<script type="text/javascript" src="scripts/shCore.js"></script>
 	<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
 	<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
-	
+
 	<!-- コード表示用JS -->
 	<script type="text/javascript">SyntaxHighlighter.all();</script>
-	
+
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="../shisetsu/js/jquery-1.9.1.js"></script>
@@ -37,7 +37,7 @@
     $( "#accordion" ).accordion({
       heightStyle: "content"
     });
-	
+
 	$("#modoru").click(function(){
 		location.href='../shisetsu/index.php';
 	});
@@ -50,7 +50,7 @@
 	<div id="wrapper_ww">
 	<div><button id='modoru'>高住menu</button></div>
 	<div id="accordion">
-<!-- *************************************************************************************************** -->	
+<!-- *************************************************************************************************** -->
 	<h3>タイトル</h3>
 	<div>
 	<p class='title'>コード集</p>
@@ -66,32 +66,100 @@
 			$genba = $_GET['slctsst'];
 			setcookie('slctsst', $genba,'','/');
 		}
-	}	
+	}
 	</pre>
 	</div>
-<!-- *************************************************************************************************** -->		
+<!-- *************************************************************************************************** -->
 	<h3>確認</h3>
 	<div>
-	<pre class="brush: js;">	
-	
+	<pre class="brush: js;">
+
+	<input type='submit' name='k".$key."' value='アップロード' onclick='return kakunin(\"k".$key."\");'/>";
 	<script language="JavaScript">
 	<!--
-	function kakunin(){
+	function kakunin(k){
 	  ret = confirm("履歴書を更新してよろしいですか？");
 	  if (ret == true){
-	  this.rirekisho.submit(); 
+	  this.k.submit();
 	  } else {
 		return false;
 		}
 	}
 	// --></script>
-	
-		</pre>
+
+<!-- 		</pre>
 	</div>
-<!-- *************************************************************************************************** -->		
+	<div>
+	<pre class="brush: js;"> -->
+		function henko(m,y){
+			  ret = confirm("編集月を変更してよろしいですか？");
+			  if (ret == true){
+					var m;
+					var y;
+					location.href="kissa.php?ge2="+m+"&nen="+y;
+				//this.k.submit();
+			  } else {
+			    return false;
+		    }		    
+		}
+		</pre>
+	</div>			
+<!-- *************************************************************************************************** -->
+	<h3>var_dump</h3>
+	<div>
+	<pre class="brush: js;">
+
+			echo "<pre>";
+			var_dump($hoge);
+			echo "</pre>";
+			exit();
+	</pre>
+	</div>
+<!-- *************************************************************************************************** -->
+	<h3>ファイル検索</h3>
+	<div>
+	<pre class="brush: js;">
+	
+		function getFileList($dir) {
+		    $files = scandir($dir);
+		    $files = array_filter($files, function ($file) { // 注(1)
+		        return !in_array($file, array('.', '..'));
+		    });
+		 
+		    $list = array();
+		    foreach ($files as $file) {
+		        $fullpath = rtrim($dir, '/') . '/' . $file; // 注(2)
+		        if (is_file($fullpath)) {
+		            $list[] = $fullpath;
+		        }
+		        if (is_dir($fullpath)) {
+		            $list = array_merge($list, getFileList($fullpath));
+		        }
+		    }
+		 
+		    return $list;
+		}
+		$dir = "tmp";
+		$list = getFileList($dir);
+		rsort($list);
+		/*echo"<pre>"; var_dump($list); echo"</pre>";*/
+			$msgx = "<a href='tmp/template1.docx'>最新版</a><br>";
+			$msgx .= "<p>以下バックアップ</p>";
+
+		foreach ($list as $key => $value) {
+			if (substr($value,0,20) == "tmp/template1_backup"){
+				$valx = mb_ereg_replace("tmp/template1_", "", $value);
+				$valx = mb_ereg_replace("\.docx", "", $valx);
+				$msgx .= "<a href='".$value."'>".$valx."</a><br>";
+			}
+		}
+		echo $msgx;
+	</pre>
+	</div>
+<!-- *************************************************************************************************** -->
 	<h3>表示非表示</h3>
 	<div>
-	<pre class="brush: js;">	
+	<pre class="brush: js;">
 	// 表示非表示関数部分
 	$.fn.clickToggle = function(a, b) {
 		return this.each(function() {
@@ -105,7 +173,7 @@
 			});
 		});
 	};
-		
+
 	// 表示非表示クリック部分
 	$(".foo").hide();
 	$("#fooid").clickToggle(function(){
@@ -115,7 +183,7 @@
 	});
 		</pre>
 	</div>
-<!-- *************************************************************************************************** -->		
+<!-- *************************************************************************************************** -->
 	<h3>ファイルのアップロード</h3>
 	<div>
 	<pre class="brush: js;">
@@ -123,12 +191,12 @@
 	$idx = 100;
 	function makeUpmado($idx) {
 		if ($_FILES['upfile']){
-			
+
 			$filename = $_FILES['upfile']["name"];
 			$fileend = end(explode('.', $filename));
 			$dtt = date("YmdHms");
 			echo $
-			
+
 			$newname = "imgcropn".$idx.$dtt.".docx";
 		  if (move_uploaded_file($_FILES["upfile"]["tmp_name"], "temp/" . $_FILES["upfile"]["name"])) {
 			$upmado = $_FILES["upfile"]["name"] . "をアップロードしました。";
@@ -148,23 +216,83 @@
 		echo $upmado;
 		echo $HtmlHeader;
 		echo $menu;
-		
+
 	//	echo $c;
-	
+
 	//	require_once('upld01.php');
 
-	<form enctype="multipart/form-data" method="post" action=""> 
+	<form enctype="multipart/form-data" method="post" action="">
 	<input type="file" name="upfile"><br><br>
 	<input type="submit" name="rirekisho" value="ファイルをアップロードする" onclick='return kakunin();'/>
 	</form>
-	
+
 	</pre>
 	</div>
-<!-- *************************************************************************************************** -->	
+
+<!-- *************************************************************************************************** -->
+	<h3>MySQL</h3>
+	<div>
+	ON DUPLICATE KEY UPDATE の使い方
+	<pre class="brush: js;">
+		$sql = "INSERT INTO c_table (c_id, c_no, c_billdate, c_place, c_date, c_meal1, c_meal2, c_meal3, c_meal4) VALUES ";
+		$sql .= substr($b,0,-1);
+		$sql .= " ON DUPLICATE KEY UPDATE c_meal1 = VALUES(c_meal1), c_meal2 = VALUES(c_meal2), c_meal3 = VALUES(c_meal3), c_meal4 = VALUES(c_meal4)";
+	//	$res = mysqli_query($dbc, $sql);
+	</pre>
+	LEFTの使い方
+	<pre class="brush: js;">
+		$sql = "SELECT * FROM c_sales WHERE c_date = '$billdate' AND LEFT(c_code, 2) = '04' AND c_place = $ipc";
+		$res = mysqli_query($dbc, $sql);
+		while ($row = mysqli_fetch_array($res)) {
+			$cid = $row['c_id'];
+			$ccd = $row['c_code'];
+			$cqy = $row['c_quantity'];
+			$ccc[$cid][$ccd] = $cqy;
+		}
+		var_dump($ccc);
+	</pre>
+	カラム名の取得　（WHERE句を使うとNULLが返る）
+	<pre class="brush: js;">
+		$sql = "SHOW COLUMNS FROM c_sales";
+		$res = mysqli_query($dbc, $sql);
+		while ($row = mysqli_fetch_array($res)) {
+			$ab[] = $row['Field'];
+			$ac[] = $row['Type'];
+		}
+		echo "<pre>";
+		var_dump($ab);
+		echo "</pre>";
+		echo "<pre>";
+		var_dump($ac);
+		echo "</pre>";
+	</pre>
+	一括UPDATE
+	<pre class="brush: js;">
+	UPDATE time_rec_tbl2 SET 
+		tr_id = CASE tr_id2 
+			WHEN 1234 THEN 308111 
+			WHEN 5678 THEN 308122 END, 
+		shift_id = CASE tr_id2 
+			WHEN 1234 THEN 40 
+			WHEN 5678 THEN 40 END, 
+		tr_state = CASE tr_id2 
+			WHEN 1234 THEN 1 
+			WHEN 5678 THEN 0 END 
+		WHERE tr_id2 IN (1234,5678)
+	</pre>
+	assoc　と最大値
+	<pre class="brush: js;">
+	$sql = "select max(column) as mx from hogehoge";
+	$res = mysql_query($sql);
+	$row = mysql_fetch_assoc($res);
+	echo $row['mx'];
+	</pre>
+	</div>
+<!-- *************************************************************************************************** -->
 	<h3>ファイルのダウンロード</h3>
 	<div>
 	<pre class="brush: js;">
-	
+
 	//ダウンロードするファイルのパス
 	$fpath = '../shisetsu/cont/T10_20170123.docx';
 	//出力する時のファイル名 出力用なので変えてよい
@@ -183,11 +311,11 @@
 	</pre>
 	<a href='../test/filedownload.php'>filedownload.php</a>
 	</div>
-	
+
 	<h3>ポップアップウィンドウ</h3>
 	<div>
 	<pre class="brush: js;">
-	
+
 	<?php
 	$c1 = "abc";
 	?>
@@ -197,43 +325,43 @@
 		var c1 = '<?php echo $c1; ?>';
 	//	alert(c1);
 	//	alert("bbc");
-		
+
 		$(function() {
 			$(".popup").click(function(){
 				var winWidth = "400";
 				var winHeight = "300";
 				var x = (screen.width - winWidth) / 2;
-				var y = (screen.height - winHeight) / 2; 
+				var y = (screen.height - winHeight) / 2;
 				var options = "menubar=no,resizable=no,scrollbars=no,toolbar=no,width=" + winWidth + ", \
 				   height=" + winHeight + ", \
 				   left="+ x + ", \
 				   top=" + y;
 				subWinObj1 = window.open(this.href,"WindowNameTEST",options);
-				
+
 				subWinObj1.blur();      // サブウインドウにフォーカスを設定する
 				window.focus();         // 自画面からフォーカスを取得
 				window.blur();          // 自画面からフォーカスを放す
 				subWinObj1.focus();     // サブウインドウにフォーカスを設定する
-				
+
 				return false;
 			});
 		});
 	</script>
 
 	<a href="inform.php" class="popup">リンクテキスト</a>
-	
+
 	</pre>
 	</div>
-<!------------------------------------------------------------------------------------------->	
+<!----------------------------------------------------------------------------------------- -->
 	<h3>PHP WORD</h3>
 	<div>
 	<pre class="brush: js;">
-	
+
 	require_once 'PHPWord.php';
 	$PHPWord = new PHPWord();
-	
+
 	require_once 'convgtjdate.php';
-	
+
 	//$post = "5400024";
 //$ad1 = "大阪府大阪市中央区南新町一丁目二番四号";
 //$ad2 = "椿本ビル八階";
@@ -250,7 +378,7 @@ $name = $sei." ".$mei."";
 			$kaishatel = $row['kaishatel'];
 			$kaishafax = $row['kaishafax'];
 		}
-echo $shoruikubun;	
+echo $shoruikubun;
 	switch ($shoruikubun) {
 		case 1:
 			$docn = 'tmp/template1.docx'; // 採用通知
@@ -273,7 +401,7 @@ echo $shoruikubun;
 		default:
 			$docn = "tmp/template2.docx";
 	}
-	
+
 $template = $PHPWord->loadTemplate($docn);
 		echo "(15)shoruikubun=".$shoruikubun."/";
 	//	exit();
@@ -304,10 +432,10 @@ $tmp_file = "tmp/sample.docx";
 $j_file   = "sample.docx";
 $j_file   = mb_convert_encoding($j_file, "SJIS", "EUC");
 // ヘッダ
-	
+
 	</pre>
 	</div>
-<!------------------------------------------------------------------------------------------->		
+<!----------------------------------------------------------------------------------------- -->
 	<h3>ドロップUL</h3>
 	<div>
 	<pre class="brush: js;">
@@ -325,41 +453,41 @@ ul, li{
  position:relative;
  margin:0px;
  padding:0px;
-  top:0px; 
+  top:0px;
  left:0px;
  display:block;
  white-space: nowrap;
  }
- 
+
  /*１段目ブロック（最初に出るメニュー）*/
  ul li ul {
  position:absolute;
  margin:2px;
  padding:2px;
-  top:10px; 
+  top:10px;
  left:-10px;
  display:block;
  background:yellow;
  white-space: nowrap;
  }
- 
+
  /**/
   ul li ul li ul{
  position:absolute;
  margin:2px;
  padding:2px;
-  top:10px; 
+  top:10px;
  left:10px;
  display:block;
  background:#cfcfcf;
  white-space: nowrap;
  }
 
- 
+
  ul li ul{
  display:none;
  }
- 
+
   ul li ul li ul{
  display:none;
  }
@@ -369,31 +497,31 @@ ul, li{
  display:block;
  position:absolute;
  font-size:14px;
- top:5px; 
+ top:5px;
  left:5px;
 	width:60px;
  z-index: 1;
  }
- 
+
   ul li ul li:hover ul{
  display:block;
  position:absolute;
  font-size:14px;
- top:0px; 
+ top:0px;
  left:15px;
   width:60px;
  z-index: 1;
- } 
+ }
 
   ul li ul li ul li:hover > ul > li {
  background:skyblue;
  }
- 
+
  ul li:hover > ul > li {
  background:yellow;
  }
- 
- 
+
+
  ul li ul li:hover > ul > li {
  background:skyblue;
  }
@@ -401,7 +529,7 @@ ul, li{
 	</div>
 	<h3>style css</h3>
 	<div>
-	<pre class="brush: js;">		
+	<pre class="brush: js;">
 @charset "utf-8";
 
 
@@ -488,9 +616,9 @@ padding: 5px 10px 10px 10px;
 background: #fff;
 }
 
-#body2{  
-    text-align: center;  
-}  
+#body2{
+    text-align: center;
+}
 
 content{
 margin: 0 auto;
@@ -818,10 +946,10 @@ img.profile {
 	text-shadow: 0px 0px 3px rgba(0,0,0,0.5);
 	width: 140px;
 	padding: 10px 10px;
-	margin-right: 5px; 
+	margin-right: 5px;
 	text-align:center;
 	text-decoration:none;
-	
+
 }
 
 .btn {
@@ -832,21 +960,21 @@ img.profile {
 	width: 140px;
 	height: 30px;
 	padding: 10px 10px;
-	margin-right: 5px; 
+	margin-right: 5px;
 	text-align:center;
 	text-decoration:none;
-	background-color: msgreen; 
+	background-color: msgreen;
 }
 
 .btn10 {
 	background: -moz-linear-gradient(top,#FFF 0%,#EEE);
 	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
-	background-color: #98fb98; 
+	background-color: #98fb98;
 	border: 1px solid #DDD;
 	color:#111;
 	width: 140px;
 	padding: 2px 10px;
-	margin-right: 5px; 
+	margin-right: 5px;
 	text-align:center;
 	text-decoration:none;
 }
@@ -854,12 +982,12 @@ img.profile {
 .btn11 {
 	background: -moz-linear-gradient(top,#FFF 0%,#EEE);
 	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
-	background-color: #b0c4de; 
+	background-color: #b0c4de;
 	border: 1px solid #DDD;
 	color:#111;
 	width: 140px;
 	padding: 2px 10px;
-	margin-right: 5px; 
+	margin-right: 5px;
 	text-align:center;
 	text-decoration:none;
 }
@@ -872,19 +1000,19 @@ img.profile {
 	color:#111;
 	width: 140px;
 	padding: 2px 10px;
-	margin-right: 5px; 
+	margin-right: 5px;
 	text-align:center;
 	text-decoration:none;
 	/zoom:1;
 }
 .btnw {
 
-	background-color: white; 
+	background-color: white;
 	border: 1px solid #666666;
 	color:#111;
 	width: 140px;
 	padding: 2px 10px;
-	margin-right: 5px; 
+	margin-right: 5px;
 	text-align:center;
 	text-decoration:none;
 }
@@ -897,7 +1025,7 @@ img.profile {
 	color:#000;
 	width: 140px;
 	padding: 10px 10px;
-	margin-right: 5px; 
+	margin-right: 5px;
 	text-align:center;
 	text-decoration:none;
 }
@@ -909,7 +1037,7 @@ img.profile {
 	color:#333;
 	width: 140px;
 	padding: 10px 10px;
-	margin-right: 5px; 
+	margin-right: 5px;
 	text-align:center;
 	text-decoration:none;
 }
@@ -920,7 +1048,7 @@ img.profile {
 	color:#000;
 	width: 140px;
 	padding: 10px 10px;
-	margin-right: 5px; 
+	margin-right: 5px;
 	text-align:center;
 	text-decoration:none;
 }
@@ -1055,13 +1183,13 @@ margin-left:-30px;
 a.anchor{
 padding-top:100px;
 margin-top:-100px
-}	
+}
 	</pre>
 	</div>
 	<h3>.htaccess</h3>
 	<div>
-	<pre class="brush: js;">	
-	
+	<pre class="brush: js;">
+
 DirectoryIndex index.html index.htm index.shtml index.php index.cgi .ht
 AuthType Basic
 AuthName "Web access"
@@ -1087,7 +1215,7 @@ allow from 219.127.9.154
 			$shozoku2 = $shozoku;
 		  }
 		  if ($spp_shain_id == 1) {$spp_shain_id = 677;}
-// ---------------------------------------------------------------------------	
+// ---------------------------------------------------------------------------
 	// ipaddress
 		$ipAddress = $_SERVER["REMOTE_ADDR"];
 		$ipa = $ipAddress;
@@ -1102,26 +1230,26 @@ allow from 219.127.9.154
 				if (($ipb == "255.229")) {$ipa = 0;} // kaizu3
 				if ($ipAddress == "100.65.16.98") {$ipa = 15;} // ---------------------------------- 脇田対策
 				if ($ipAddress == "100.65.16.99") {$ipa = 0;} // ---------------------------------- 常務対策
-				
+
 			if (($shisetsu_pid >= 110) && ($shisetsu_pid <= 111)) { // -----------------------------ケアマネ対策
 			$ipc = 920;
 			$ipa = $ipc;
 			$slevel = 4;
 			}
-			
+
 		$ipima = $ipAddress; // 手をつけない今のipアドレス
 		$ipima = substr($ipima, 7, 2);
 		$ipima = intval($ipima);
-		
+
 		// 会社名　16:川商 26:アドバンス 65:mobile 31:海津
 		$ipcom = substr($ipAddress, 4, 2);
 	</pre>
 	</div>
-	
+
 	<h3>test send mail</h3>
 	<div>
 	<pre class="brush: js;">
-	//   $mailto = $email;  
+	//   $mailto = $email;
 	$mailto = "To:alive1kyo@gmail.com";
 	//送信先メールアドレス
     $subject = "Subject:テスト受信メール/";  //メール件名
@@ -1129,10 +1257,10 @@ allow from 219.127.9.154
     $content = "『ときどきweb/";
 	// from
 	$mailfrom = "From:tajiri@kawasho-gr.jp";
-	
+
 	mb_language("Ja") ;
 	mb_internal_encoding("UTF-8");
-	 
+
 	$header = "MIME-Version: 1.0\n";
 //	$header .= "Content-Transfer-Encoding: 7bit\n";
 	$header .= "Content-Type: text/plain; charset=ISO-2022-JP\n";
@@ -1142,10 +1270,10 @@ allow from 219.127.9.154
 	$header .= "Return-Path:tajiri@kawasho-gr.jp\n";
 	$header .= "X-Mailer: PHP/ livemail";
 
-	
+
  //   $mailfrom="From:" .mb_encode_mimeheader($name) ."<".$email.">";
 
-	
+
     if(mb_send_mail($mailto,$subject,$content,$header,"-f ".$mailfrom) == true){
         $managerFlag = "○";
     }else{
@@ -1156,7 +1284,7 @@ allow from 219.127.9.154
 	echo $mailto.$subject.$content.$header.$mailfrom;
 	</pre>
 	</div>
-<!--------------------------------------------------------------------------------------------------------->	
+<!--------------------------------------------------------------------------------------------------------->
 	<h3>天気予報</h3>
 	<div>
 	<pre class="brush: js;">
@@ -1166,12 +1294,12 @@ allow from 219.127.9.154
 	// 情報（JSON形式）を取得し，HTMLコンテンツとして表示する。
 	$.post("proxy.php",{"URL":URL},
 		function(data){
-			
+
 			// タイトルの表示
 			$("#title").text(data.location.prefecture + "・"
 				+ data.location.city + "・"
 				+ data.forecasts[day].dateLabel + "の天気");
-			
+
 			// ・・・その他もろもろの情報を表示
 			$("#telop").text(data.forecasts[day].telop);
 
@@ -1181,7 +1309,7 @@ allow from 219.127.9.154
 			$("#image1").attr("src",data.forecasts[1].image.url);
 
 			$("#description").text(data.description.text);
-			
+
 			// ピンポイント予報
 			var listr = "";
 			for(i = 0 ; i < data.pinpointLocations.length; i++){
@@ -1190,13 +1318,13 @@ allow from 219.127.9.154
 				listr += "<li><a href='"+lnk+"'>"+str+"</a></li>";
 			}
 			$("#pinpointlocations").html(listr);
-			
+
 			// 発表日時の表示
 			$("#publictime").text(data.publicTime);
-			
+
 			// コピーライトの表示
 			$("#copyright").text(data.copyright.title);
-			
+
 		},"json"
 	);
 }
@@ -1207,7 +1335,7 @@ $(function(){
 		var day = $("#day option:selected").val();
 		getWeather(URL,day);
 	}).click();
-	
+
 	// ↑ページを最初に開いた時には，京都の今日の天気を表示
 });
 </script>
@@ -1256,7 +1384,7 @@ $(function(){
 <div id="copyright"></div>
 	</pre>
 	</div>
-	
+
 	<h3>samba4</h3>
 	<div>
 	<pre class="brush: js;">
@@ -1267,12 +1395,12 @@ $(function(){
 	</p>
 	</pre>
 	</div>
-<!--------------------------------------------------------------------------------------------------------->		
+<!--------------------------------------------------------------------------------------------------------->
 	<h3>test_schedule php</h3>
 	<div>
 	<pre class="brush: js;">
 	// test_schedule.php
-	
+
 	$date_string = date("Y-m-d");
 list($year,$month,$date,$day) = explode('-', date('Y-n-j-w', strtotime($date_string)));
 echo $year."/".$month."/".$date."/".$day;
@@ -1385,7 +1513,7 @@ function bit_to_array($type, $int)
 }
 	</pre>
 	</div>
-<!--------------------------------------------------------------------------------------------------------->	
+<!--------------------------------------------------------------------------------------------------------->
 	<h3>ajax test</h3>
 	<div>
 	<pre class="brush: js;">
@@ -1412,7 +1540,7 @@ function bit_to_array($type, $int)
     <br/>
     <div id="text"></div>
 	</body>
-	
+
 	// sample 2
 	<!DOCTYPE html>
 <html>
@@ -1430,7 +1558,7 @@ function bit_to_array($type, $int)
 	<h3>inform php</h3>
 	<div>
 	<pre class="brush: js;">
-	
+
 	<script type="text/javascript">
 
 	function pstDt(x, y){
@@ -1441,12 +1569,12 @@ function bit_to_array($type, $int)
 				$("#result").html(data);
 				$("#f1").hide();
 				} else {
-				
-				}	
+
+				}
 			}
 		);
 	}
-	
+
 	$(function(){
 
 		// クリックでポップアップ
@@ -1485,7 +1613,7 @@ function bit_to_array($type, $int)
 	<h3>logon</h3>
 	<div>
 	<pre class="brush: js;">
-	<!------------>	
+	<!------------>
 	// logon.html logon2.php
 <script type="text/javascript">
 
@@ -1504,12 +1632,12 @@ function bit_to_array($type, $int)
 		//		localStorage.setItem("id", x);
 		//		localStorage.setItem("pw", y);
 				} else {
-				
-				}	
+
+				}
 			}
 		);
 	}
-	
+
 	$(function(){
 
 		// クリックでポップアップ
@@ -1527,7 +1655,7 @@ function bit_to_array($type, $int)
 		},5000); // 10秒
 
 	});
-</script>	
+</script>
 	<div id='f1'>
 <h1>ログイン</h1>
 <p>ログインしてください</p>
@@ -1539,10 +1667,10 @@ function bit_to_array($type, $int)
 </div>
 
 <div id="result"></div>
-	<!------------>	
+	<!------------>
 	// logon2
 		require_once('../shisetsu/connectvars.php');
-	$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME); 
+	$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 	mysqli_set_charset( $dbc, "UTF8");
 	define('MYSELF', basename($_SERVER['SCRIPT_NAME']));
 	$myself = MYSELF;
@@ -1567,7 +1695,7 @@ function bit_to_array($type, $int)
 	return array($shainid, $sname, $slevel);
 	}
 	LIST($shainid, $sname, $slevel) = readInfo($x, $y);
-	
+
 	// HTML文字列で計算結果を返す。
 
 	if ($shainid > 0){
@@ -1591,21 +1719,21 @@ if (isset($_GET['chk'])){
 		$a2 = substr($chk[$i],4,1);
 		echo "a=".$a1."-".$a2."<br>";
 	}
-	
+
 }
-	
+
 
 ?>
 <script type="text/javascript">
 /* ready method */
 	$(function(){
-		
+
 		$("#hide1").click(function(){
 			$("table").eq(1).hide();
 		});
-		
+
 		$("#slct").click(function(){
-			
+
 		});
 	});
 </script>
@@ -1653,7 +1781,7 @@ if (isset($_GET['chk'])){
 	<h3>社員順番入れ替え jq/index.html</h3>
 	<div>
 	<pre class="brush: js;">
-	
+
 	<script type="text/javascript" src="js/jquery.reveal.js"></script>
 <script>
 $(function(){
@@ -1700,12 +1828,12 @@ $(function(){
 	}).disableSelection();
 });
 </script>
-	
+
 	</pre>
 	</div>
 
 <!--------------------------------------------------------------------------------------------------------->
-	<!------------>	
+	<!------------>
 	<h3>新規用セット</h3>
 	<div>
 	<pre class="brush: js;">
