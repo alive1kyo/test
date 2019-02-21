@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>jQuery UI Autocomplete - デフォルト</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/demos/style.css" />
+  <script>
+  $(function() {
+    var availableTags = [
+		{
+		  ln_file: "T1301451.json",
+		  ln_key: "1301451",
+		  ln_name: "[ＪＲ]岩泉線 (茂市～岩泉) "
+		},
+		{
+		  ln_file: "T1301541.json",
+		  ln_key: "1301541",
+		  ln_name: "[ＪＲ]北上線 (北上～横手) "
+		},
+		{
+		  ln_file: "T1301671.json",
+		  ln_key: "1301671",
+		  ln_name: "[ＪＲ]磐越東線(ゆうゆうあぶくまライン) (いわき～郡山) "
+		}
+    ];
+
+    var nary = [];
+    $(availableTags).each(function(i, e){
+    	console.log(e, $(e));
+    		nary.push($(e).attr("ln_name"));
+
+    	console.log(nary);
+    });
+
+    $( "#tags" ).autocomplete({
+      //リストを指定
+      source: nary
+    });
+  });
+  </script>
+</head>
+<body>
+<div class="ui-widget">
+  <label for="tags">検索: </label>
+  <input id="tags" />
+</div>
+<form action="autocomplete.html" method="get">
+  <input type='text' name='a' value=''>
+</form>  
+</body>
+</html>
