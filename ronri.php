@@ -23,7 +23,7 @@
 		echo "<br>";
 		echo "<br>\$a = \$_GET['a']; <br>\$b = \$_GET['b']; <br>\$c = \$_GET['c'];";
 		echo "<br>";
-		echo "<br>キャスト";
+		echo "<br>キャスト var_dump((int)value)";
 		echo "<br>(int)\$a = ";
 		var_dump((int)$a);
 		echo "<br>(int)\$b = ";
