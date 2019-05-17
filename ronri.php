@@ -2,6 +2,7 @@
 	<html lang="ja">
 	<head>
 	<meta charset="UTF-8">
+	<meta http-equiv="Content-Script-Type" content="text/javascript">
 	<title>論理計算</title>
 	</head>
 	<body>
@@ -17,7 +18,17 @@
 		<form>
 			a = <input type='text' name='a' value='<?php echo $a; ?>' style='width:50px'>
 			: b = <input type='text' name='b' value='<?php echo $b; ?>' style='width:50px'>
-			<input type='submit' value=''>
+<?php
+	if (isset($_GET['b']) && ($_GET['b'] == 'array')){
+		$c = $_GET['c'];
+		?>
+			: c0 = <input type='text' name='c[]' value='<?php echo $c[0]; ?>' style='width:50px'>
+			: c1 = <input type='text' name='c[]' value='<?php echo $c[1]; ?>' style='width:50px'>
+		<?php
+	}
+?>			
+			<input type='submit' value='送信'>
+			<input type='button' value='リセット' onclick='location.href="ronri.php"'>
 		</form>
 <?php
 	if (isset($a) && isset($b)){
