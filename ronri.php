@@ -64,7 +64,7 @@
 		echo "<br>a xor b = ";
 		var_dump($a xor $b);
 
-		echo "<p>&& and, || or は優先順位が違う</p>";
+		echo "<p>&& and, || or は働きは同じだが優先順位が違う</p>";
 	}
 ?>
 	</body>
