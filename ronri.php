@@ -13,6 +13,7 @@
 	}
 ?>		
 		<p>1,0,null,文字 などを入力してみよう</p>
+		<p>アドレスバーで?a=1&b[]=a&b[]=2&b[]=3などと入れてみよう</p>
 		<form>
 			a = <input type='text' name='a' value='<?php echo $a; ?>' style='width:50px'>
 			: b = <input type='text' name='b' value='<?php echo $b; ?>' style='width:50px'>
