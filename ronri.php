@@ -30,6 +30,7 @@
 		var_dump((int)$b);
 		echo "<br>(int)\$c = ";
 		var_dump((int)$c);
+		echo "<br>キャストしても元の変数は変化しない";
 		
 		echo "<br>";
 		echo "<br>var_dump(value)";
