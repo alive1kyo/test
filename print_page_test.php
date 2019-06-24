@@ -41,12 +41,16 @@ EOF;
 	}
 	table {
 	  border: 1px solid black; /* 1pxが最小 */
+	  border-radius: 0.2em;
 	}
 
 	.green-label {
 	  border: 1px solid green;
 	  border-left-width: 10px;
 	  padding: 1px 3px;
+	  position: absolute;
+	  top: 200px;
+	  left: 350px;
 	}
 
 	/* プリント用のスタイル */
@@ -76,6 +80,22 @@ EOF;
 <body>
 	<section class="sheet">
   <!-- 印刷内容 1枚目 -->
+  <table id="">
+  	<tr><td>ab</td></tr>
+  	<tr><td>cd</td></tr>
+  </table>
+  <table id="">
+  	<tr><td>ab</td></tr>
+  	<tr><td>cd</td></tr>
+  </table>
+  <table id="">
+  	<tr><td>ab</td></tr>
+  	<tr><td>cd</td></tr>
+  </table>
+  <table id="">
+  	<tr><td>ab</td></tr>
+  	<tr><td>cd</td></tr>
+  </table>	    
   <?php echo $str; ?>
 	</section>
 <!--	<section class="sheet">
